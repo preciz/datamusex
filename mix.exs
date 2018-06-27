@@ -30,7 +30,7 @@ defmodule Datamusex.MixProject do
 
   defp package() do
     [
-      maintainers: "Barna Kovacs",
+      maintainers: ["Barna Kovacs"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/preciz/datamusex"}
     ]
