@@ -18,13 +18,26 @@ end
 ## Usage
 
 ```elixir
-Datamusex.similar_meaning("car")
-Datamusex.sound_like("car")
-Datamusex.spelled_similarly("car")
-Datamusex.rhyme_with("car")
-Datamusex.used_to_describe("car")
-Datamusex.often_follow("car")
-Datamusex.triggered_by("car")
+iex> "donut" |> Datamusex.similar_meaning
+%Datamusex.ParamList{
+  params: [%Datamusex.Param{name: :similar_meaning, value: "donut"}]
+}
+
+iex> "computer" |> Datamusex.similar_meaning |> Datamusex.triggered_by |> Datamusex.get_words
+{:ok,
+ %HTTPoison.Response{
+    body: [
+         %{"score" => 1442, "word" => "programmer"},
+         ...
+
+iex> "donut" |> Datamusex.similar_meaning |> Datamusex.triggered_by("torus") |> Datamusex.get_words
+{:ok,
+ %HTTPoison.Response{
+    body: [
+         %{"score" => 1799, "word" => "toroid"},
+         ...
+
+
 Datamusex.suggestions("car")
 ```
 
