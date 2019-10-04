@@ -1,4 +1,5 @@
 defmodule Datamusex.API do
+  @moduledoc false
   use HTTPoison.Base
 
   def process_url(url) do

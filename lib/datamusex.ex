@@ -1,6 +1,6 @@
 defmodule Datamusex do
   @moduledoc """
-  Datamuse elixir wrapper
+  Elixir wrapper for the free [Datamuse](https://www.datamuse.com/api/) API.
   """
 
   defmodule ParamList do
@@ -31,6 +31,19 @@ defmodule Datamusex do
     end
   end)
 
+  @doc """
+  Builds params from `%Datamusex.Paramlist{}`, executes request and returns response
+  from datamuse.com.
+
+  See [https://www.datamuse.com/api/](https://www.datamuse.com/api/)
+  for further info.
+
+  ## Example:
+      Datamusex.similar_meaning("computer")
+      |> Datamusex.triggered_by("device")
+      |> Datamusex.get_words
+
+  """
   def get_words(param_list = %ParamList{}, headers \\ [], options \\ []) do
     params_from_param_list = param_list |> param_list_to_httpoison_params
 
@@ -44,6 +57,16 @@ defmodule Datamusex do
     )
   end
 
+  @doc """
+  Auto complete suggestions.
+
+  See [https://www.datamuse.com/api/](https://www.datamuse.com/api/)
+  for further info.
+
+  ## Example:
+      Datamusex.get_suggestions("car")
+
+  """
   def get_suggestions(words, headers \\ [], options \\ [])
       when is_binary(words) and is_list(headers) and is_list(options) do
     default_params = [s: process_words(words)]
