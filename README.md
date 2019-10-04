@@ -10,7 +10,7 @@ by adding `datamusex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:datamusex, "~> 0.3.0"}
+    {:datamusex, "~> 0.4"}
   ]
 end
 ```
