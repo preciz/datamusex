@@ -1,6 +1,11 @@
 defmodule Datamusex do
   @moduledoc """
   Elixir wrapper for the free [Datamuse](https://www.datamuse.com/api/) API.
+
+  ## Exaple usage:
+      Datamusex.similar_meaning("computer")
+      |> Datamusex.triggered_by("device")
+      |> Datamusex.get_words
   """
 
   defmodule ParamList do
