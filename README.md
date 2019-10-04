@@ -38,7 +38,7 @@ iex> "donut" |> Datamusex.similar_meaning |> Datamusex.triggered_by("torus") |> 
          ...
 
 
-Datamusex.suggestions("car")
+Datamusex.get_suggestions("car")
 ```
 
 
