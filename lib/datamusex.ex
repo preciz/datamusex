@@ -99,7 +99,7 @@ defmodule Datamusex do
     tuple_name =
       case name do
         :similar_meaning -> :ml
-        :sound_like -> :ml
+        :sound_like -> :sl
         :spelled_similarly -> :sp
         :rhyme_with -> :rel_rhy
         :used_to_describe -> :rel_jjb
