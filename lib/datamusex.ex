@@ -24,12 +24,6 @@ defmodule Datamusex do
     :synonyme
   ]
   |> Enum.each(fn name ->
-    def unquote(name)(acc = %ParamList{params: [%Param{value: value}]}) do
-      %ParamList{
-        params: [%Param{name: unquote(name), value: value} | acc.params]
-      }
-    end
-
     def unquote(name)(acc \\ %ParamList{params: []}, words) when is_binary(words) do
       %ParamList{
         params: [%Param{name: unquote(name), value: words |> process_words} | acc.params]

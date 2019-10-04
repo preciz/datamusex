@@ -23,14 +23,14 @@ iex> "donut" |> Datamusex.similar_meaning
   params: [%Datamusex.Param{name: :similar_meaning, value: "donut"}]
 }
 
-iex> "computer" |> Datamusex.similar_meaning |> Datamusex.triggered_by |> Datamusex.get_words
+iex> Datamusex.similar_meaning("computer") |> Datamusex.triggered_by("device") |> Datamusex.get_words
 {:ok,
  %HTTPoison.Response{
     body: [
-         %{"score" => 1442, "word" => "programmer"},
+         %{"score" => 1318, "word" => "tablet"},
          ...
 
-iex> "donut" |> Datamusex.similar_meaning |> Datamusex.triggered_by("torus") |> Datamusex.get_words
+iex> Datamusex.similar_meaning("donut") |> Datamusex.triggered_by("torus") |> Datamusex.get_words
 {:ok,
  %HTTPoison.Response{
     body: [
