@@ -1,6 +1,8 @@
 defmodule Datamusex.MixProject do
   use Mix.Project
 
+  @github "https://github.com/preciz/datamusex"
+
   def project do
     [
       app: :datamusex,
@@ -10,8 +12,7 @@ defmodule Datamusex.MixProject do
       description: "Datamuse API wrapper",
       deps: deps(),
       package: package(),
-      name: "Datamusex",
-      source_url: "https://github.com/preciz/datamusex"
+      name: "Datamusex"
     ]
   end
 
@@ -23,8 +24,8 @@ defmodule Datamusex.MixProject do
 
   defp deps do
     [
-      {:poison, "~> 2.0 or ~> 3.0"},
-      {:httpoison, "~> 1.0"},
+      {:jason, "~> 1.1"},
+      {:httpoison, "~> 1.0"}
     ]
   end
 
@@ -32,7 +33,7 @@ defmodule Datamusex.MixProject do
     [
       maintainers: ["Barna Kovacs"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/preciz/datamusex"}
+      links: %{"GitHub" => @github}
     ]
   end
 end
