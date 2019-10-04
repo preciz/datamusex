@@ -37,18 +37,37 @@ defmodule Datamusex do
     options =
       options |> Keyword.update(:params, params_from_param_list, &(&1 ++ params_from_param_list))
 
-    get(
+    Datamusex.API.get(
       "words",
       headers,
       options
     )
   end
 
-  def param_list_to_httpoison_params(%ParamList{params: params}) do
+  def get_suggestions(words, headers \\ [], options \\ [])
+      when is_binary(words) and is_list(headers) and is_list(options) do
+    default_params = [s: process_words(words)]
+
+    options = options |> Keyword.update(:params, default_params, &(&1 ++ default_params))
+
+    Datamusex.API.get(
+      "sug",
+      headers,
+      options
+    )
+  end
+
+  defp process_words(words) when is_binary(words) do
+    words
+    |> String.split(" ")
+    |> Enum.join("+")
+  end
+
+  defp param_list_to_httpoison_params(%ParamList{params: params}) do
     params |> Enum.map(&param_to_param_tuple/1)
   end
 
-  def param_to_param_tuple(%Param{name: name, value: value}) do
+  defp param_to_param_tuple(%Param{name: name, value: value}) do
     tuple_name =
       case name do
         :similar_meaning -> :ml
@@ -62,32 +81,5 @@ defmodule Datamusex do
       end
 
     {tuple_name, value}
-  end
-
-  def get_suggestions(words, headers \\ [], options \\ [])
-      when is_binary(words) and is_list(headers) and is_list(options) do
-    default_params = [s: process_words(words)]
-
-    options = options |> Keyword.update(:params, default_params, &(&1 ++ default_params))
-
-    get(
-      "sug",
-      headers,
-      options
-    )
-  end
-
-  def process_words(words) when is_binary(words) do
-    words
-    |> String.split(" ")
-    |> Enum.join("+")
-  end
-
-  def process_url(url) do
-    "https://api.datamuse.com/" <> url
-  end
-
-  def process_response_body(body) do
-    body |> Poison.decode!()
   end
 end
