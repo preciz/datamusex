@@ -3,8 +3,6 @@ defmodule Datamusex do
   Datamuse elixir wrapper
   """
 
-  use HTTPoison.Base
-
   defmodule ParamList do
     @enforce_keys [:params]
     defstruct params: []
