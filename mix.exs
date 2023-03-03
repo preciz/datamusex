@@ -27,7 +27,7 @@ defmodule Datamusex.MixProject do
   defp deps do
     [
       {:jason, "~> 1.1"},
-      {:httpoison, "~> 1.0"},
+      {:httpoison, "~> 2.0"},
       {:ex_doc, "~> 0.21", only: :dev, runtime: false}
     ]
   end
