@@ -2,10 +2,12 @@ defmodule Datamusex do
   @moduledoc """
   Elixir wrapper for the free [Datamuse](https://www.datamuse.com/api/) API.
 
-  ## Exaple usage:
+  ## Examples
+
       Datamusex.similar_meaning("computer")
       |> Datamusex.triggered_by("device")
-      |> Datamusex.get_words
+      |> Datamusex.get_words()
+
   """
 
   defmodule ParamList do
@@ -43,10 +45,11 @@ defmodule Datamusex do
   See [https://www.datamuse.com/api/](https://www.datamuse.com/api/)
   for further info.
 
-  ## Example:
+  ## Examples
+
       Datamusex.similar_meaning("computer")
       |> Datamusex.triggered_by("device")
-      |> Datamusex.get_words
+      |> Datamusex.get_words()
 
   """
   def get_words(param_list = %ParamList{}, headers \\ [], options \\ []) do
@@ -63,12 +66,13 @@ defmodule Datamusex do
   end
 
   @doc """
-  Auto complete suggestions.
+  Autocomplete suggestions.
 
   See [https://www.datamuse.com/api/](https://www.datamuse.com/api/)
   for further info.
 
-  ## Example:
+  ## Examples
+
       Datamusex.get_suggestions("car")
 
   """
