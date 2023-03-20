@@ -36,7 +36,7 @@ defmodule Datamusex.MixProject do
     [
       main: "Datamusex",
       source_ref: "v#{@version}",
-      source_url: @github,
+      source_url: @github
     ]
   end
 

@@ -10,4 +10,3 @@ defmodule Datamusex.API do
     body |> Jason.decode!()
   end
 end
-
